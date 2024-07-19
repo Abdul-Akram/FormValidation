@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100px;
+            border-radius: 60%;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            min-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .contact-form h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .options {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .success-message {
+            color: green;
+            font-size: 14px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section class="contact-form">
+        <h1>Login</h1>
+        <div class="logo">
+            <img src="Assets/photo_6080212767056444916_x.jpg" alt="Logo">
+        </div>
+        <form id="MyForm" action="#" method="post">
+            <div class="form-group">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" placeholder="First Name">
+                <span class="error-message FirstError"></span>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name" placeholder="Last Name">
+                <span class="error-message LastError"></span>
+            </div>
+            <div class="form-group">
+                <label for="phone">📱 Mobile No:</label>
+                <input type="text" id="phone" name="phone" placeholder="Mobile No">
+                <span class="error-message PhoneError"></span>
+            </div>
+            <div class="form-group">
+                <label for="states">State:</label>
+                <select class="options" name="states" id="states">
+                    <option value="Empty"></option>
+                    <option value="andhra_pradesh">Andhra Pradesh</option>
+                    <option value="arunachal_pradesh">Arunachal Pradesh</option>
+                    <option value="assam">Assam</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="chhattisgarh">Chhattisgarh</option>
+                    <option value="goa">Goa</option>
+                    <option value="gujarat">Gujarat</option>
+                    <option value="haryana">Haryana</option>
+                    <option value="himachal_pradesh">Himachal Pradesh</option>
+                    <option value="jharkhand">Jharkhand</option>
+                    <option value="karnataka">Karnataka</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="madhya_pradesh">Madhya Pradesh</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="manipur">Manipur</option>
+                    <option value="meghalaya">Meghalaya</option>
+                    <option value="mizoram">Mizoram</option>
+                    <option value="nagaland">Nagaland</option>
+                    <option value="odisha">Odisha</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="rajasthan">Rajasthan</option>
+                    <option value="sikkim">Sikkim</option>
+                    <option value="tamil_nadu">Tamil Nadu</option>
+                    <option value="telangana">Telangana</option>
+                    <option value="tripura">Tripura</option>
+                    <option value="uttar_pradesh">Uttar Pradesh</option>
+                    <option value="uttarakhand">Uttarakhand</option>
+                    <option value="west_bengal">West Bengal</option>
+                    <option value="andaman_nicobar">Andaman and Nicobar Islands</option>
+                    <option value="chandigarh">Chandigarh</option>
+                    <option value="dadra_nagar_haveli">Dadra and Nagar Haveli and Daman and Diu</option>
+                    <option value="lakshadweep">Lakshadweep</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="puducherry">Puducherry</option>
+                    <option value="ladakh">Ladakh</option>
+                    <option value="jammu_kashmir">Jammu and Kashmir</option>
+                </select>
+                <span class="error-message LocationError"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder=".........">
+                <span class="error-message PasswordError"></span>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="success-message" id="successMessage" style="display: none;">Form submitted successfully!</div>
+    </section>
+    <script>
+        document.getElementById("MyForm").addEventListener('submit', function (event) {
+            let isValid = true;
+
+            // Existing validation code...
+
+            let first = document.getElementById("first-name").value;
+            let first_error = document.querySelector(".FirstError");
+            if (!name_validation(first, first_error)) {
+                isValid = false;
+            }
+            let last = document.getElementById("last-name").value;
+            let last_error = document.querySelector(".LastError");
+            if (!name_validation(last, last_error)) {
+                isValid = false;
+            }
+
+            function name_validation(name, display) {
+                const hasLetter = /[a-zA-Z]/;
+                if (name.length === 0) {
+                    display.textContent = "Name is required";
+                    return false;
+                } else if (!hasLetter.test(name)) {
+                    display.textContent = "Name must contain letters only";
+                    return false;
+                } else {
+                    display.textContent = "";
+                    return true;
+                }
+            }
+
+            let phone = document.getElementById("phone").value;
+            let phone_error = document.querySelector(".PhoneError");
+            if (!validate_phone(phone, phone_error)) {
+                isValid = false;
+            }
+
+            function validate_phone(number, display) {
+                const hasDigit = /^\d+$/;
+                const hasCorrectLength = /^\d{10}$/;
+                if (number.length === 0) {
+                    display.textContent = "Phone is required";
+                    return false;
+                } else if (!hasDigit.test(number)) {
+                    display.textContent = "Phone must contain numbers only";
+                    return false;
+                } else if (!hasCorrectLength.test(number)) {
+                    display.textContent = "Number must contain 10 digits only";
+                    return false;
+                } else {
+                    display.textContent = "";
+                    return true;
+                }
+            }
+
+            let location = document.getElementById("states").value;
+            let location_error = document.querySelector(".LocationError");
+            if (location === "Empty") {
+                location_error.textContent = "Location is required";
+                isValid = false;
+            } else {
+                location_error.textContent = "";
+            }
+
+            let password = document.getElementById("password").value;
+            let password_error = document.querySelector(".PasswordError");
+            if (!validate_password(password, password_error)) {
+                isValid = false;
+            }
+
+            function validate_password(password, password_error) {
+                const hasNum = /\d/;
+                const hasUpper = /[A-Z]/;
+                if (password.length == "" || password === null) {
+                    password_error.textContent = "Password is required";
+                    return false;
+                } else if (password.length < 7 || password.length > 10) {
+                    password_error.textContent = "Password must be between 7 and 10 characters long";
+                    return false;
+                }
+                if (!(hasNum.test(password) && hasUpper.test(password))) {
+                    password_error.textContent = "Password must contain at least one number and one uppercase letter";
+                    return false;
+                } else {
+                    password_error.textContent = "";
+                    return true;
+                }
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }else {
+                event.preventDefault(); // Prevent form from submitting normally
+                document.getElementById("successMessage").style.display = "block"; // Show success message
+                document.getElementById("MyForm").reset();
+            }
+        });
+    </script>
+</body>
+</html>
